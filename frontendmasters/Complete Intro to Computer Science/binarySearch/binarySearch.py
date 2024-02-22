@@ -33,10 +33,15 @@ test = Solution()
 #     {"id": 10, "name": "Burke"},
 #     {"id": 14, "name": "Ben"}
 # ]))
-print(test.binarySearch(10, [
-    {"id": 1, "name": "Sam"},
-    {"id": 10, "name": "Sarah"},
-    {"id": 11, "name": "John"},
-    {"id": 21, "name": "Burke"},
-    {"id": 22, "name": "Ben"}
-]))
+print(
+    test.binarySearch(
+        10,
+        [
+            {"id": 1, "name": "Sam"},
+            {"id": 10, "name": "Sarah"},
+            {"id": 11, "name": "John"},
+            {"id": 21, "name": "Burke"},
+            {"id": 22, "name": "Ben"},
+        ],
+    )
+)

@@ -24,9 +24,6 @@ class Solution:
         return False
 
 
-
-
-
 test = Solution()
-#print(test.containsDuplicate2([0,4,5,0,3,6]))
-print(test.containsDuplicate2([3,3]))
+# print(test.containsDuplicate2([0,4,5,0,3,6]))
+print(test.containsDuplicate2([3, 3]))

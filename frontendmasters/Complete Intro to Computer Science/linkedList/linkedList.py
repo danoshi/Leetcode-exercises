@@ -63,11 +63,11 @@ class LinkedList:
         return excise.value
 
 
-
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
+
 
 # Create an instance of the LinkedList class
 linked_list = LinkedList()
@@ -83,7 +83,7 @@ print(linked_list.get(1))  # Output: 20
 print(linked_list.get(2))  # Output: 30
 
 # Test the pop method
-print(linked_list.pop())   # Output: 30
+print(linked_list.pop())  # Output: 30
 
 # Test the delete method
 print(linked_list.delete(0))  # Output: 10

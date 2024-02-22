@@ -31,7 +31,8 @@ class Solution:
         print(nums[:-k])
         nums[:] = nums[-k:] + nums[:-k]
 
+
 test = Solution()
 print(test.rotate2([1, 2, 3, 4, 5, 6, 7], 3))
-#print(test.rotate([-1,-100,3,99], 2))
-#test.rotate([1,2,3,4,5,6,7], 3)
+# print(test.rotate([-1,-100,3,99], 2))
+# test.rotate([1,2,3,4,5,6,7], 3)
