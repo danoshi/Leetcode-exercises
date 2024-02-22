@@ -3,8 +3,8 @@ import math
 
 class Solution:
     def reverse(self, x: int) -> int:
-        MAX_INT = 2 ** 31 - 1 # 2,147,483,647
-        MIN_INT = -2 ** 31    #-2,147,483,648
+        MAX_INT = 2 ** 31 - 1  # 2,147,483,647
+        MIN_INT = -(2 ** 31)  # -2,147,483,648
         reverse = 0
 
         while x != 0:
@@ -15,7 +15,6 @@ class Solution:
             x = math.trunc(x / 10)
 
         return reverse
-
 
 
 test = Solution()

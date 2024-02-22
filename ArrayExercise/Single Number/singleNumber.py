@@ -12,9 +12,7 @@ class Solution:
         return no_duplicate_list.pop()
 
 
-
-
 test = Solution()
-print(test.singleNumber([2,2,1])) # 1
-#print(test.singleNumber([4,1,2,1,2])) # 4
-#print(test.singleNumber([1])) # 1
+print(test.singleNumber([2, 2, 1]))  # 1
+# print(test.singleNumber([4,1,2,1,2])) # 4
+# print(test.singleNumber([1])) # 1

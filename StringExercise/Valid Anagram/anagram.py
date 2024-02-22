@@ -13,5 +13,6 @@ class Solution:
             return True
         return False
 
+
 test = Solution()
 print(test.isAnagram("anagram", "nagaram"))

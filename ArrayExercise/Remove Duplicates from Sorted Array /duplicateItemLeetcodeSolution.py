@@ -16,4 +16,4 @@ class Solution:
 
 
 test = Solution()
-test.removeDuplicates([1,1,2])
+test.removeDuplicates([1, 1, 2])

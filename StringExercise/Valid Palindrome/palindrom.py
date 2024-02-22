@@ -17,6 +17,5 @@ class Solution:
         return True
 
 
-
 test = Solution()
 print(test.isPalindrome(""))

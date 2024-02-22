@@ -45,4 +45,3 @@ print(test.mergeSort([10, 5, 3, 8, 2, 6, 4, 7, 9, 1]))
 print(test.mergeSort([10, 5, 3, 8]))
 print(test.mergeSort([2, 1]))
 print(test.mergeSort([2]))
-

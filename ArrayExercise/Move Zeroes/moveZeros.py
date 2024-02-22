@@ -37,5 +37,5 @@ class Solution:
 
 
 test = Solution()
-test.moveZeroes2([0,0,1])
-#test.moveZeroes([4,2,4,0,0,3,0,5,1,0])
+test.moveZeroes2([0, 0, 1])
+# test.moveZeroes([4,2,4,0,0,3,0,5,1,0])
