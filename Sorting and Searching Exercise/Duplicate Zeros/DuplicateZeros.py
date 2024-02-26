@@ -8,7 +8,7 @@ class Solution:
         """
         zeroes = arr.count(0)
         length = len(arr)
-        for i in range(length-1, -1, -1):
+        for i in range(length - 1, -1, -1):
             if i + zeroes < length:
                 arr[i + zeroes] = arr[i]
             if arr[i] == 0:
@@ -18,4 +18,4 @@ class Solution:
 
 
 test = Solution()
-print(test.duplicateZeros([1,0,2,3,0,4,5,0]))
+print(test.duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]))
