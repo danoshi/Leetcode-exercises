@@ -8,10 +8,9 @@ class Solution:
             for n in nums:
                 if n == val:
                     nums.remove(n)
-                    counter -=1
+                    counter -= 1
         return len(nums)
 
 
-
 test = Solution()
-print(test.removeElement([0,1,2,2,3,0,4,2], 2))
+print(test.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2))

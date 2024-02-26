@@ -10,6 +10,5 @@ class Solution:
         return arr
 
 
-
 test = Solution()
-print(test.sortedSquares([-4,-1,0,3,10]))
+print(test.sortedSquares([-4, -1, 0, 3, 10]))

@@ -16,7 +16,5 @@ class Solution:
         return counter
 
 
-
-
 test = Solution()
-print(test.findNumbers([555,901,482,1771]))
+print(test.findNumbers([555, 901, 482, 1771]))
