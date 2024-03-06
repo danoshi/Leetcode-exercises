@@ -20,11 +20,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: Create data directory
-        run: mkdir -p data
+        run: mkdir -p test_data
         
       - name: Run pytest and generate report
         run: |
-          python -m pytest --cov=frontendmasters.Complete_Intro_to_Computer_Science.BinarySearchTree.binarySearchTree --cov-report term --cov-report xml > data/pytest-coverage_4.txt
+          python -m pytest --cov=frontendmasters.Complete_Intro_to_Computer_Science.BinarySearchTree.binarySearchTree --cov-report term --cov-report xml > test_data/pytest-coverage.txt
 
       - name: Pytest coverage comment
         if: ${{ github.ref == 'refs/heads/master' }}
