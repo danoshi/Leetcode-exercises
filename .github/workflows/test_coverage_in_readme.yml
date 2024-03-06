@@ -3,36 +3,29 @@ on:
   push:
 jobs:
   update-coverage-on-readme:
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10"]
-
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will fail to push refs to destination repo
 
+      - name: Pytest coverage comment
+        if: ${{ github.ref == 'refs/heads/master' }}
+        id: coverageComment
+        uses: MishaKav/pytest-coverage-comment@master
+        with:
+          hide-comment: true
+          pytest-coverage-path: ./data/pytest-coverage_4.txt
 
-    - name: Pytest coverage comment
-      if: ${{ github.ref == 'refs/heads/master' }}
-      id: coverageComment
-      uses: MishaKav/pytest-coverage-comment@main
-      with:
-        hide-comment: true
-        pytest-coverage-path: ./data/pytest-coverage_4.txt
+      - name: Update Readme with Coverage Html
+        if: ${{ github.ref == 'refs/heads/master' }}
+        run: |
+          sed -i '/<!-- Pytest Coverage Comment:Begin -->/,/<!-- Pytest Coverage Comment:End -->/c\<!-- Pytest Coverage Comment:Begin -->\n\${{ steps.coverageComment.outputs.coverageHtml }}\n<!-- Pytest Coverage Comment:End -->' ./README.md
 
-    - name: Update Readme with Coverage Html
-      if: ${{ github.ref == 'refs/heads/master' }}
-      run: |
-        sed -i '/<!-- Pytest Coverage Comment:Begin -->/,/<!-- Pytest Coverage Comment:End -->/c\<!-- Pytest Coverage Comment:Begin -->\n\${{ steps.coverageComment.outputs.coverageHtml }}\n<!-- Pytest Coverage Comment:End -->' ./README.md
-
-    - name: Create Pull Request for Readme
-      if: ${{ github.ref == 'refs/heads/master' }}
-      uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        title: "Update coverage on Readme with pytest-coverage-comment"
-        commit-message: ":zap: Update pytest coverage"
-        body: |
-          Update coverage on Readme
-        base: ${{ github.head_ref }} # Creates pull request onto pull request or commit branch
-        branch: actions/pytest-coverage-comment
+      - name: Commit & Push changes to Readme
+        if: ${{ github.ref == 'refs/heads/master' }}
+        uses: actions-js/push@master
+        with:
+          message: Update coverage on Readme
+          github_token: ${{ secrets.GITHUB_TOKEN }}
