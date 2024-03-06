@@ -13,3 +13,7 @@ Additionally, I've included exercises from various courses focused on learning d
 4) Moving on to `StringsExercise`, this section encompasses a diverse range of solved problems centered around string manipulation and related topics.
 
 5) Lastly, in the `frontendmasters` folder, you'll find solved exercises along with detailed descriptions focusing on data structures and algorithms.
+
+
+<!-- Pytest Coverage Comment:Begin -->
+<!-- Pytest Coverage Comment:End -->
