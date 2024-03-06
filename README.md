@@ -16,4 +16,4 @@ Additionally, I've included exercises from various courses focused on learning d
 
 
 <!-- Pytest Coverage Comment:Begin -->
-<!-- Pytest Coverage Comment:End -->
+\n<!-- Pytest Coverage Comment:End -->
