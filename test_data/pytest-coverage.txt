@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-8.0.2, pluggy-1.4.0
+rootdir: /home/runner/work/Leetcode-exercises/Leetcode-exercises
+plugins: cov-4.1.0
+collected 2 items
+
+tests/test_BinarySearchTree.py ..                                        [100%]
+
+---------- coverage: platform linux, python 3.9.18-final-0 -----------
+Name                                                                                      Stmts   Miss  Cover
+-------------------------------------------------------------------------------------------------------------
+frontendmasters/Complete_Intro_to_Computer_Science/BinarySearchTree/binarySearchTree.py      37      1    97%
+-------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                        37      1    97%
+Coverage XML written to file coverage.xml
+
+
+============================== 2 passed in 0.08s ===============================
