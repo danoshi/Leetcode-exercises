@@ -16,5 +16,4 @@ Additionally, I've included exercises from various courses focused on learning d
 
 
 <!-- Pytest Coverage Comment:Begin -->
-<a href="https://github.com/danoshi/Leetcode-exercises/blob/main/README.md"><img alt="Coverage" src="https://img.shields.io/badge/Coverage-97%25-brightgreen.svg" /></a><details><summary>Coverage Report </summary><table><tr><th>File</th><th>Stmts</th><th>Miss</th><th>Cover</th><th>Missing</th></tr><tbody><tr><td colspan="5"><b>frontendmasters/Complete_Intro_to_Computer_Science/BinarySearchTree</b></td></tr><tr><td>&nbsp; &nbsp;<a href="https://github.com/danoshi/Leetcode-exercises/blob/main/frontendmasters/Complete_Intro_to_Computer_Science/BinarySearchTree/binarySearchTree.py">binarySearchTree.py</a></td><td>37</td><td>1</td><td>1</td><td><a href="https://github.com/danoshi/Leetcode-exercises/blob/main/frontendmasters/Complete_Intro_to_Computer_Science/BinarySearchTree/binarySearchTree.py#L 97%"> 97%</a></td></tr><tr><td><b>TOTAL</b></td><td><b>37</b></td><td><b>1</b></td><td><b>97%</b></td><td>&nbsp;</td></tr></tbody></table></details>
-<!-- Pytest Coverage Comment:End -->
+\n<!-- Pytest Coverage Comment:End -->
