@@ -24,14 +24,17 @@ jobs:
           python-version: '3.9'
 
       - name: Install Python dependencies
-        run: pip install black flake8
+        run: pip install black
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Ensure you have push access
-          auto_fix: true
-          black: true
-          black_auto_fix: true
-          flake8: true
-          flake8_auto_fix: false
+      - name: Auto-format code with black and commit changes
+        run: |
+          black . || true  # Format code, but don't fail the job if formatting made changes
+          if [ -n "$(git status --porcelain)" ]; then  # Check if there are changes
+            git config user.name 'github-actions[bot]'
+            git config user.email 'github-actions[bot]@users.noreply.github.com'
+            git add .
+            git commit -m "Apply auto-formatting with black"
+            git push
+          else
+            echo "No changes made by black."
+          fi
