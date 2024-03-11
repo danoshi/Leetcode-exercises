@@ -1,0 +1,40 @@
+name: Lint
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize # Consider running on updates to PR as well
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }} # Checkout the PR branch
+          token: ${{ secrets.GITHUB_TOKEN }} # Ensure you have push access
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Python dependencies
+        run: pip install black
+
+      - name: Auto-format code with black and commit changes
+        run: |
+          black . || true  # Format code, but don't fail the job if formatting made changes
+          if [ -n "$(git status --porcelain)" ]; then  # Check if there are changes
+            git config user.name 'github-actions[bot]'
+            git config user.email 'github-actions[bot]@users.noreply.github.com'
+            git add .
+            git commit -m "Apply auto-formatting with black"
+            git push
+          else
+            echo "No changes made by black."
+          fi

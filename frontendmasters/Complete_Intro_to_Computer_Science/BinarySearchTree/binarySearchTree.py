@@ -39,13 +39,13 @@ class Node:
         self.right = None
 
     def serialize(self):
-        serialized_node = {'value': self.value}
+        serialized_node = {"value": self.value}
         if self.left:
-            serialized_node['left'] = self.left.serialize()
+            serialized_node["left"] = self.left.serialize()
         else:
-            serialized_node['left'] = None  # Represent None explicitly
+            serialized_node["left"] = None  # Represent None explicitly
         if self.right:
-            serialized_node['right'] = self.right.serialize()
+            serialized_node["right"] = self.right.serialize()
         else:
-            serialized_node['right'] = None  # Represent None explicitly
+            serialized_node["right"] = None  # Represent None explicitly
         return serialized_node
