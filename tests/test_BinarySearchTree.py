@@ -39,6 +39,9 @@ class TestTree(unittest.TestCase):
         self.assertIsNone(objs['left']['right']['left'])
         self.assertIsNone(objs['left']['right']['right'])
 
+
+
+
         self.assertEqual(objs['right']['value'], 7)
 
         self.assertEqual(objs['right']['left']['value'], 4)

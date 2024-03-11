@@ -28,7 +28,8 @@ jobs:
         run: |
           python -m pytest --cov=frontendmasters.Complete_Intro_to_Computer_Science.BinarySearchTree.binarySearchTree --cov-report term --cov-report xml > test_data/pytest-coverage.txt
 
-      - name: Pytest coverage comment (Optional)
+      - name: Pytest coverage comment
+        id: coverageComment
         uses: MishaKav/pytest-coverage-comment@main
         with:
           hide-comment: true
@@ -36,8 +37,7 @@ jobs:
 
       - name: Update Readme with Coverage
         run: |
-          COVERAGE=$(cat ./test_data/pytest-coverage.txt)
-          sed -i "/<!-- Pytest Coverage Comment:Begin -->/,/<!-- Pytest Coverage Comment:End -->/c\<!-- Pytest Coverage Comment:Begin -->\nCoverage: ${COVERAGE}\n<!-- Pytest Coverage Comment:End -->" README.md
+          sed -i '/<!-- Pytest Coverage Comment:Begin -->/,/<!-- Pytest Coverage Comment:End -->/c\<!-- Pytest Coverage Comment:Begin -->\n\${{ steps.coverageComment.outputs.coverageHtml }}\n<!-- Pytest Coverage Comment:End -->' ./README.md
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add README.md
