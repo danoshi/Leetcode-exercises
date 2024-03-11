@@ -1,5 +1,7 @@
 import unittest
-from frontendmasters.Complete_Intro_to_Computer_Science.BinarySearchTree.binarySearchTree import Tree
+from frontendmasters.Complete_Intro_to_Computer_Science.BinarySearchTree.binarySearchTree import (
+    Tree,
+)
 
 
 class TestTree(unittest.TestCase):
@@ -30,40 +32,38 @@ class TestTree(unittest.TestCase):
 
         objs = tree.to_object()
 
-        self.assertEqual(objs['value'], 3)
+        self.assertEqual(objs["value"], 3)
 
-        self.assertEqual(objs['left']['value'], 1)
-        self.assertIsNone(objs['left']['left'])
+        self.assertEqual(objs["left"]["value"], 1)
+        self.assertIsNone(objs["left"]["left"])
 
-        self.assertEqual(objs['left']['right']['value'], 2)
-        self.assertIsNone(objs['left']['right']['left'])
-        self.assertIsNone(objs['left']['right']['right'])
+        self.assertEqual(objs["left"]["right"]["value"], 2)
+        self.assertIsNone(objs["left"]["right"]["left"])
+        self.assertIsNone(objs["left"]["right"]["right"])
 
+        self.assertEqual(objs["right"]["value"], 7)
 
+        self.assertEqual(objs["right"]["left"]["value"], 4)
+        self.assertIsNone(objs["right"]["left"]["left"])
 
+        self.assertEqual(objs["right"]["left"]["right"]["value"], 6)
+        self.assertEqual(objs["right"]["left"]["right"]["left"]["value"], 5)
+        self.assertIsNone(objs["right"]["left"]["right"]["left"]["right"])
+        self.assertIsNone(objs["right"]["left"]["right"]["left"]["left"])
 
-        self.assertEqual(objs['right']['value'], 7)
+        self.assertEqual(objs["right"]["right"]["value"], 10)
+        self.assertIsNone(objs["right"]["right"]["right"])
 
-        self.assertEqual(objs['right']['left']['value'], 4)
-        self.assertIsNone(objs['right']['left']['left'])
+        self.assertEqual(objs["right"]["right"]["left"]["value"], 9)
+        self.assertIsNone(objs["right"]["right"]["left"]["right"])
 
-        self.assertEqual(objs['right']['left']['right']['value'], 6)
-        self.assertEqual(objs['right']['left']['right']['left']['value'], 5)
-        self.assertIsNone(objs['right']['left']['right']['left']['right'])
-        self.assertIsNone(objs['right']['left']['right']['left']['left'])
+        self.assertEqual(objs["right"]["right"]["left"]["left"]["value"], 8)
+        self.assertIsNone(objs["right"]["right"]["left"]["left"]["right"])
+        self.assertIsNone(objs["right"]["right"]["left"]["left"]["left"])
 
-        self.assertEqual(objs['right']['right']['value'], 10)
-        self.assertIsNone(objs['right']['right']['right'])
-
-        self.assertEqual(objs['right']['right']['left']['value'], 9)
-        self.assertIsNone(objs['right']['right']['left']['right'])
-
-        self.assertEqual(objs['right']['right']['left']['left']['value'], 8)
-        self.assertIsNone(objs['right']['right']['left']['left']['right'])
-        self.assertIsNone(objs['right']['right']['left']['left']['left'])
     def tearDown(self):
         print("All tests passed successfully!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
