@@ -1,6 +1,8 @@
+from typing import Optional
+
 class Tree:
     def __init__(self):
-        self.root = None
+        self.root: Optional[Node] = None
 
     def add(self, value):
         if self.root is None:
@@ -35,8 +37,8 @@ class Tree:
 class Node:
     def __init__(self, value):
         self.value = value
-        self.left = None
-        self.right = None
+        self.left: Optional[Node] = None
+        self.right: Optional[Node] = None
 
     def serialize(self):
         serialized_node = {"value": self.value}

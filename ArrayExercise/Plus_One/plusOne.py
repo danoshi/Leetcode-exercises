@@ -21,9 +21,3 @@ class Solution:
             # If we reach this point, it means all digits were 9, so we need to add an extra digit
         digits.insert(0, 1)
         return digits
-
-
-test = Solution()
-# print(test.plusOne([1,2,3]))
-print(test.plusOne([9]))
-print(test.plusOne([9, 9, 9]))

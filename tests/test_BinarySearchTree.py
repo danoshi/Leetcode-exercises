@@ -1,6 +1,6 @@
 import unittest
 from frontendmasters.Complete_Intro_to_Computer_Science.BinarySearchTree.binarySearchTree import (
-    Tree,
+    Tree, Node
 )
 
 
@@ -16,12 +16,32 @@ class TestTree(unittest.TestCase):
         tree.add(8)
 
         # Verify tree structure
+        self.assertIsNotNone(tree.root)
+        assert isinstance(tree.root, Node)
         self.assertEqual(tree.root.value, 5)
+
+        self.assertIsNotNone(tree.root.left)
+        assert isinstance(tree.root.left, Node)
         self.assertEqual(tree.root.left.value, 3)
+
+        self.assertIsNotNone(tree.root.right)
+        assert isinstance(tree.root.right, Node)
         self.assertEqual(tree.root.right.value, 7)
+
+        self.assertIsNotNone(tree.root.left.left)
+        assert isinstance(tree.root.left.left, Node)
         self.assertEqual(tree.root.left.left.value, 2)
+
+        self.assertIsNotNone(tree.root.left.right)
+        assert isinstance(tree.root.left.right, Node)
         self.assertEqual(tree.root.left.right.value, 4)
+
+        self.assertIsNotNone(tree.root.right.left)
+        assert isinstance(tree.root.right.left, Node)
         self.assertEqual(tree.root.right.left.value, 6)
+
+        self.assertIsNotNone(tree.root.right.right)
+        assert isinstance(tree.root.right.right, Node)
         self.assertEqual(tree.root.right.right.value, 8)
 
     def test_create_correct_tree(self):

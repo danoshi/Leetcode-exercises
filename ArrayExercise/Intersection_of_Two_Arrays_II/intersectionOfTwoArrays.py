@@ -12,8 +12,3 @@ class Solution:
                     nums2.remove(n)
                     break
         return final_arr
-
-
-test = Solution()
-print(test.intersect([1, 2, 2, 1], [2, 2]))
-print(test.intersect([4, 9, 5], [9, 4, 9, 8, 4]))
