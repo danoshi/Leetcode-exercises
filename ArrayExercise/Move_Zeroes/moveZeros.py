@@ -22,7 +22,6 @@ class Solution:
             nums.append(0)
             count -= 1
 
-        print(nums)
 
     def moveZeroes2(self, nums: List[int]) -> None:
         l = 0
@@ -34,8 +33,3 @@ class Solution:
                 nums[r] = temp
                 l += 1
             r += 1
-
-
-test = Solution()
-test.moveZeroes2([0, 0, 1])
-# test.moveZeroes([4,2,4,0,0,3,0,5,1,0])

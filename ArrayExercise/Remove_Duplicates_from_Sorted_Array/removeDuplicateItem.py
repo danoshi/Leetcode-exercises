@@ -12,7 +12,3 @@ class Solution:
         for h in helper:
             nums.remove(h)
         return len(nums)
-
-
-test = Solution()
-test.removeDuplicates([1, 1, 2])

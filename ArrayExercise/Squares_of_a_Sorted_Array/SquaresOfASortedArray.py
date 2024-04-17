@@ -8,7 +8,3 @@ class Solution:
             arr.append(x * x)
         arr.sort()
         return arr
-
-
-test = Solution()
-print(test.sortedSquares([-4, -1, 0, 3, 10]))

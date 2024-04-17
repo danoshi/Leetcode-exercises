@@ -13,8 +13,4 @@ class Solution:
                     arr.append(n)
                     return arr
             k -= 1
-
-
-test = Solution()
-# print(test.twoSum([2,7,11,15], 9))
-print(test.twoSum([3, 2, 3], 6))
+        return arr

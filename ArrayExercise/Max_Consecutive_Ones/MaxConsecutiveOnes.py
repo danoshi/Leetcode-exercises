@@ -14,7 +14,3 @@ class Solution:
             arr.append(counter)
         arr.sort()
         return arr[len(arr) - 1]
-
-
-test = Solution()
-print(test.findMaxConsecutiveOnes([1, 1, 0, 1, 1, 1]))

@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Solution:
+class Solution2:
     def removeDuplicates(self, nums: List[int]) -> int:
         size = len(nums)
         insertIndex = 1
@@ -13,7 +13,3 @@ class Solution:
                 # Incrementing insertIndex count by 1
                 insertIndex = insertIndex + 1
         return insertIndex
-
-
-test = Solution()
-test.removeDuplicates([1, 1, 2])

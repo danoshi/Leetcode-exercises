@@ -22,8 +22,3 @@ class Solution:
             if nums[n] == nums[n + 1]:
                 return True
         return False
-
-
-test = Solution()
-# print(test.containsDuplicate2([0,4,5,0,3,6]))
-print(test.containsDuplicate2([3, 3]))

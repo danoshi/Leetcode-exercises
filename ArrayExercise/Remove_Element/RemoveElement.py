@@ -10,7 +10,3 @@ class Solution:
                     nums.remove(n)
                     counter -= 1
         return len(nums)
-
-
-test = Solution()
-print(test.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2))
