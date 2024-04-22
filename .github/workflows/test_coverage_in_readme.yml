@@ -4,6 +4,9 @@ on:
     workflows: [Lint]
     types:
       - completed
+    branches:
+      - master
+      - feat/testing
 jobs:
   update-coverage-on-readme:
     runs-on: ubuntu-latest
