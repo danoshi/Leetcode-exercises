@@ -13,7 +13,7 @@ class TestSolution(unittest.TestCase):
         solution = Solution()
 
         self.assertEqual(solution_leetcode.removeDuplicates([1, 1, 2]), 2)
-        self.assertEqual(solution.removeDuplicates([1,1,2]), 2)
+        self.assertEqual(solution.removeDuplicates([1, 1, 2]), 2)
 
     def tearDown(self):
         print("All tests passed successfully!")
