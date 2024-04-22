@@ -1,7 +1,5 @@
 import unittest
-from MathExercise.Power_of_three.PowerOfThree import (
-    Solution
-)
+from MathExercise.Power_of_three.PowerOfThree import Solution
 
 
 class TestSolution(unittest.TestCase):
@@ -12,6 +10,7 @@ class TestSolution(unittest.TestCase):
 
     def tearDown(self):
         print("All tests passed successfully!")
+
 
 if __name__ == "__main__":
     unittest.main()

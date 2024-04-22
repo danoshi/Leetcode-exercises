@@ -1,6 +1,7 @@
 import unittest
 from frontendmasters.Complete_Intro_to_Computer_Science.BinarySearchTree.binarySearchTree import (
-    Tree, Node
+    Tree,
+    Node,
 )
 
 

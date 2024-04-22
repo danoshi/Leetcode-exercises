@@ -1,7 +1,5 @@
 import unittest
-from Sorting_and_Searching_Exercise.Merge_Sorted_Array.MergeSortedArr import (
-    Solution
-)
+from Sorting_and_Searching_Exercise.Merge_Sorted_Array.MergeSortedArr import Solution
 
 
 class TestSolution(unittest.TestCase):
@@ -12,9 +10,9 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(solution.merge([1], 1, [], 0), None)
         self.assertEqual(solution.merge([0], 0, [1], 1), None)
 
-
     def tearDown(self):
-            print("All tests passed successfully!")
+        print("All tests passed successfully!")
+
 
 if __name__ == "__main__":
     unittest.main()

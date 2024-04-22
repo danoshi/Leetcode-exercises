@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class Tree:
     def __init__(self):
         self.root: Optional[Node] = None

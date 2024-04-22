@@ -1,7 +1,6 @@
 import unittest
-from ArrayExercise.Squares_of_a_Sorted_Array.SquaresOfASortedArray import (
-    Solution
-)
+from ArrayExercise.Squares_of_a_Sorted_Array.SquaresOfASortedArray import Solution
+
 
 class TestSolution(unittest.TestCase):
     def test_sortedSquares(self):
@@ -11,6 +10,7 @@ class TestSolution(unittest.TestCase):
 
     def tearDown(self):
         print("All tests passed successfully!")
+
 
 if __name__ == "__main__":
     unittest.main()

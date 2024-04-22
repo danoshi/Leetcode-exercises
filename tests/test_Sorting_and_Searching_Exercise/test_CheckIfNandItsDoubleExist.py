@@ -1,7 +1,8 @@
 import unittest
 from Sorting_and_Searching_Exercise.Check_If_N_and_Its_Double_Exist.CheckIfNandItsDoubleExist import (
-    Solution
+    Solution,
 )
+
 
 class TestSolution(unittest.TestCase):
     def test_checkIfExist(self):
@@ -11,6 +12,7 @@ class TestSolution(unittest.TestCase):
 
     def tearDown(self):
         print("All tests passed successfully!")
+
 
 if __name__ == "__main__":
     unittest.main()
