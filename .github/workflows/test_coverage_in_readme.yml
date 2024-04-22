@@ -1,7 +1,7 @@
 name: Update Coverage on Readme
 on:
   workflow_run:
-    workflows: ["Lint"]
+    workflows: [Lint]
     types:
       - completed
 jobs:
@@ -38,6 +38,9 @@ jobs:
       - name: Update Readme with Coverage
         run: |
           sed -i '/<!-- Pytest Coverage Comment:Begin -->/,/<!-- Pytest Coverage Comment:End -->/c\<!-- Pytest Coverage Comment:Begin -->\n${{ steps.coverageComment.outputs.coverageHtml }}\n<!-- Pytest Coverage Comment:End -->' ./README.md
+
+          # Pull latest changes from the remote repository
+          git pull origin HEAD
 
           # Check if there are any changes
           if git diff --quiet README.md; then
