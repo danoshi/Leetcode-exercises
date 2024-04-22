@@ -42,7 +42,7 @@ jobs:
 
       - name: Run pytest and generate report
         run: |
-          pytest --cov=frontendmasters --cov=ArrayExercise --cov=MathExercise --cov=Sorting_and_Searching_Exercise --cov=StringExercise --cov-report=term --cov-report=xml > test_data/pytest-coverage.txt
+          python -m pytest --cov=frontendmasters --cov=ArrayExercise --cov=MathExercise --cov=Sorting_and_Searching_Exercise --cov=StringExercise --cov-report=term --cov-report=xml > test_data/pytest-coverage.txt
 
       - name: Pytest coverage comment
         id: coverageComment
