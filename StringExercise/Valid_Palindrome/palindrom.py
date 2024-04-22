@@ -15,7 +15,3 @@ class Solution:
             j -= 1
 
         return True
-
-
-test = Solution()
-print(test.isPalindrome(""))

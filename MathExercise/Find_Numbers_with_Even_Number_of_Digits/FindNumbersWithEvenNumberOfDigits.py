@@ -14,7 +14,3 @@ class Solution:
                 counter += 1
             digits = 0
         return counter
-
-
-test = Solution()
-print(test.findNumbers([555, 901, 482, 1771]))

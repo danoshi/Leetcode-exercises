@@ -22,7 +22,6 @@ class Solution:
             nums.append(0)
             count -= 1
 
-
     def moveZeroes2(self, nums: List[int]) -> None:
         l = 0
         r = 0

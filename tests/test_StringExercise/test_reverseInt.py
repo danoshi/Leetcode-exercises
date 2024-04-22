@@ -1,12 +1,12 @@
 import unittest
-from ArrayExercise.Remove_Element.RemoveElement import Solution
+from StringExercise.Reverse_Integer.reverseInt import Solution
 
 
 class TestSolution(unittest.TestCase):
-    def test_removeElement(self):
+    def test_reverse(self):
         solution = Solution()
 
-        self.assertEqual(solution.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2), 5)
+        self.assertEqual(solution.reverse(120), 21)
 
     def tearDown(self):
         print("All tests passed successfully!")

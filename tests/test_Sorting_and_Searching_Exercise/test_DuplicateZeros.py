@@ -1,12 +1,12 @@
 import unittest
-from ArrayExercise.Remove_Element.RemoveElement import Solution
+from Sorting_and_Searching_Exercise.Duplicate_Zeros.DuplicateZeros import Solution
 
 
 class TestSolution(unittest.TestCase):
-    def test_removeElement(self):
+    def test_duplicateZeros(self):
         solution = Solution()
 
-        self.assertEqual(solution.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2), 5)
+        self.assertEqual(solution.duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]), None)
 
     def tearDown(self):
         print("All tests passed successfully!")

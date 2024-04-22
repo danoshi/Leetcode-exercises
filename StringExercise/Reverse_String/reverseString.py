@@ -21,7 +21,3 @@ class Solution:
         while left < right:
             s[left], s[right] = s[right], s[left]
             left, right = left + 1, right - 1
-
-
-test = Solution()
-test.reverseString(["h", "e", "l", "l", "o"])

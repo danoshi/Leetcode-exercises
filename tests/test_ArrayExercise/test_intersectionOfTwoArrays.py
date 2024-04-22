@@ -1,7 +1,6 @@
 import unittest
-from ArrayExercise.Intersection_of_Two_Arrays_II.intersectionOfTwoArrays import (
-    Solution
-)
+from ArrayExercise.Intersection_of_Two_Arrays_II.intersectionOfTwoArrays import Solution
+
 
 class TestSolution(unittest.TestCase):
     def test_intersect(self):
@@ -12,6 +11,7 @@ class TestSolution(unittest.TestCase):
 
     def tearDown(self):
         print("All tests passed successfully!")
+
 
 if __name__ == "__main__":
     unittest.main()
