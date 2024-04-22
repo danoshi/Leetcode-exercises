@@ -1,6 +1,7 @@
 import unittest
 from ArrayExercise.Plus_One.plusOne import Solution
 
+
 class TestSolution(unittest.TestCase):
     def setUp(self):
         self.solution = Solution()
@@ -29,6 +30,7 @@ class TestSolution(unittest.TestCase):
 
     def tearDown(self):
         print("All tests passed successfully!")
+
 
 if __name__ == "__main__":
     unittest.main()
