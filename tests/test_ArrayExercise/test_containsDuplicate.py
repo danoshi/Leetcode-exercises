@@ -14,6 +14,10 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(solution.containsDuplicate2([3, 3]), True)
         self.assertEqual(solution.containsDuplicate([3, 3]), True)
 
+        self.assertEqual(solution.containsDuplicate2([2,2]), True)
+        self.assertEqual(solution.containsDuplicate([2, 2]), True)
+
+
     def tearDown(self):
         print("All tests passed successfully!")
 
