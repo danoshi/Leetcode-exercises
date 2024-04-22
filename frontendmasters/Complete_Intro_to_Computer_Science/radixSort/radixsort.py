@@ -37,9 +37,3 @@ class Solution:
                     array.append(buckets[j].pop(0))
 
         return array
-
-
-test = Solution()
-print(test.getDigit(1391, 0, 4))
-print(test.getLongestNumber([1, 10, 100, 1000]))
-print(test.radixSort([2, 20324, 2323, 3, 434, 23, 1]))

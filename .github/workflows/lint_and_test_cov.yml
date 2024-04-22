@@ -1,33 +1,48 @@
-name: Update Coverage on Readme
+name: Combined Actions
+
 on:
-  workflow_run:
-    workflows: [Lint]
+  pull_request:
     types:
-      - completed
+      - opened
+      - synchronize # Consider running on updates to PR as well
 
 jobs:
-  update-coverage-on-readme:
+  lint_and_update_pr:
+    name: Lint and Update PR
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out Git repository
+        uses: actions/checkout@v3
         with:
-          persist-credentials: true # Make sure to use a token with push access
-          fetch-depth: 0 # Necessary for a comprehensive history
           ref: ${{ github.head_ref }} # Checkout the PR branch
-          token: ${{ secrets.GITHUB_TOKEN }} # Use a token with push access
+          token: ${{ secrets.GITHUB_TOKEN }} # Ensure you have push access
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.9"
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
-          pip install -r requirements.txt
+          pip install black pytest pytest-cov
+
+      - name: Auto-format code with black and commit changes
+        run: |
+          black . || true  # Format code, but don't fail the job if formatting made changes
+          if [ -n "$(git status --porcelain)" ]; then  # Check if there are changes
+            git config user.name 'github-actions[bot]'
+            git config user.email 'github-actions[bot]@users.noreply.github.com'
+            git add .
+            git commit -m "Apply auto-formatting with black"
+            git push
+          else
+            echo "No changes made by black."
+          fi
 
       - name: Run pytest and generate report
         run: |
-          python -m pytest --cov=frontendmasters --cov=ArrayExercise --cov=MathExercise --cov=Sorting_and_Searching_Exercise --cov=StringExercise --cov-report term --cov-report xml > test_data/pytest-coverage.txt
+          python -m pytest --cov=frontendmasters --cov=ArrayExercise --cov=MathExercise --cov=Sorting_and_Searching_Exercise --cov=StringExercise --cov-report=term --cov-report=xml > test_data/pytest-coverage.txt
 
       - name: Pytest coverage comment
         id: coverageComment
@@ -39,9 +54,6 @@ jobs:
       - name: Update Readme with Coverage
         run: |
           sed -i '/<!-- Pytest Coverage Comment:Begin -->/,/<!-- Pytest Coverage Comment:End -->/c\<!-- Pytest Coverage Comment:Begin -->\n${{ steps.coverageComment.outputs.coverageHtml }}\n<!-- Pytest Coverage Comment:End -->' ./README.md
-
-          # Pull latest changes from the remote repository
-          git pull origin HEAD
 
           # Check if there are any changes
           if git diff --quiet README.md; then
