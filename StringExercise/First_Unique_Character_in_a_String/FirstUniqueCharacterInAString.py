@@ -11,7 +11,3 @@ class Solution:
                 return i
 
         return -1
-
-
-test = Solution()
-print(test.firstUniqChar("leetcode"))

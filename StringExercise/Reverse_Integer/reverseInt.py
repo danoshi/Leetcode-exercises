@@ -15,7 +15,3 @@ class Solution:
             x = math.trunc(x / 10)
 
         return reverse
-
-
-test = Solution()
-print(test.reverse(120))

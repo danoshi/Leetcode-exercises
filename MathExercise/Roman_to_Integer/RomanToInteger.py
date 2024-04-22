@@ -13,7 +13,3 @@ class Solution:
                 total += roman[s[i]]
                 i += 1
         return total
-
-
-test = Solution()
-print(test.romanToInt("MCMXCIV"))

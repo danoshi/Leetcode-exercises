@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
       - name: Install dependencies
         run: |
@@ -26,7 +26,7 @@ jobs:
 
       - name: Run pytest and generate report
         run: |
-          python -m pytest --cov=frontendmasters --cov=ArrayExercise --cov-report term --cov-report xml > test_data/pytest-coverage.txt
+          python -m pytest --cov=frontendmasters --cov=ArrayExercise --cov=MathExercise --cov=Sorting_and_Searching_Exercise --cov=StringExercise --cov-report term --cov-report xml > test_data/pytest-coverage.txt
 
       - name: Pytest coverage comment
         id: coverageComment

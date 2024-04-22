@@ -19,7 +19,3 @@ class Solution:
             else:
                 erg.append(str(i))
         return erg
-
-
-test = Solution()
-print(test.fizzBuzz(15))

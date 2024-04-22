@@ -15,7 +15,3 @@ class Solution:
                 zeroes -= 1
                 if i + zeroes < length:
                     arr[i + zeroes] = 0
-
-
-test = Solution()
-print(test.duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]))

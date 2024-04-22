@@ -12,7 +12,3 @@ class Solution:
         if arr2 == arr:
             return True
         return False
-
-
-test = Solution()
-print(test.isAnagram("anagram", "nagaram"))
