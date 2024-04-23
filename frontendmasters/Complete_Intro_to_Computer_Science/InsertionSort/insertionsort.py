@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    def insertionSort(self, nums: List[int]) -> int:
+    def insertionSort(self, nums: List[int]) -> List[int]:
         a = len(nums)
         # start the loop at index 1 since we compare the item before with the current one
         for i in range(1, a):
@@ -18,11 +18,4 @@ class Solution:
                 j -= 1
             # the current value is now the number which is being switched
             nums[j + 1] = numberToInsert
-        print(nums)
-
-
-test = Solution()
-test.insertionSort([10, 5, 3, 8, 2, 6, 4, 7, 9, 1])
-test.insertionSort([10, 5, 3, 8])
-test.insertionSort([2, 1])
-test.insertionSort([2])
+        return nums

@@ -23,25 +23,3 @@ class Solution:
                 maximum = index - 1
             else:
                 return array[index]
-
-
-test = Solution()
-# print(test.linearSearch(10, [
-#     {"id": 1, "name": "Sam"},
-#     {"id": 11, "name": "Sarah"},
-#     {"id": 21, "name": "John"},
-#     {"id": 10, "name": "Burke"},
-#     {"id": 14, "name": "Ben"}
-# ]))
-print(
-    test.binarySearch(
-        10,
-        [
-            {"id": 1, "name": "Sam"},
-            {"id": 10, "name": "Sarah"},
-            {"id": 11, "name": "John"},
-            {"id": 21, "name": "Burke"},
-            {"id": 22, "name": "Ben"},
-        ],
-    )
-)
