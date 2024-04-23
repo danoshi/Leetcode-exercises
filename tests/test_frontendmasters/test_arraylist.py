@@ -1,7 +1,8 @@
 import unittest
 from frontendmasters.Complete_Intro_to_Computer_Science.arraylist.arraylist import (
-    ArrayList
+    ArrayList,
 )
+
 
 class TestSolution(unittest.TestCase):
     def test_add(self):

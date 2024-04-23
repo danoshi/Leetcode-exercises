@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class LinkedList:
     def __init__(self):
         self.head: Optional[Node] = None
@@ -74,4 +75,4 @@ class LinkedList:
 class Node:
     def __init__(self, value):
         self.value = value
-        self.next: Optional['Node'] = None  # Note the forward declaration 'Node'
+        self.next: Optional["Node"] = None  # Note the forward declaration 'Node'
