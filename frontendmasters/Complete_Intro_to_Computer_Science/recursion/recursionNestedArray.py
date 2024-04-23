@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Solution:
+class SolutionNestedArray:
     def recursionNestedArray(self, nums):
         erg = 0
         for i in range(len(nums)):
@@ -13,8 +13,3 @@ class Solution:
             else:
                 erg += current
         return erg
-
-
-test = Solution()
-test.recursionNestedArray([10, 5, 3, 8, 2, 6, 4, 7, 9, 1])
-print(test.recursionNestedArray([1, [2], 3]))
