@@ -1,26 +1,30 @@
-# 1089. Duplicate Zeros
+# 941. Valid Mountain Array
 
-Let’s have a look on the description of the problem:
+Given an array of integers `arr`, return _`true` if and only if it is a valid mountain array_.
 
-Given a fixed-length integer array `arr`, duplicate each occurrence of zero, shifting the remaining elements to the right.
+Recall that arr is a mountain array if and only if:
 
-**Note** that elements beyond the length of the original array are not written. Do the above modifications to the input array in place and do not return anything.
+- `arr.length >= 3`
+- There exists some `i` with `0 < i < arr.length - 1` such that:
+  - `arr[0] < arr[1] < ... < arr[i - 1] < arr[i]`
+  - `arr[i] > arr[i + 1] > ... > arr[arr.length - 1]`
 
 **Example 1:**
 
 ```
-Input: arr = [1,0,2,3,0,4,5,0]
-Output: [1,0,0,2,3,0,0,4]
-Explanation: After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4]
+Input: arr = [2,1]
+Output: false
 ```
 
-In this problem we would need to duplicate the zero elements and shift the elements to the right side, which would mean whenever we duplicate we would pop the last element. Let’s have a more detailed look on my solution:
+In this problem we would need to check each an every element to see when we hit the peak which can’t be the start and as well it can’t be the end. We also need to check that when we find the peak that each next element is smaller than the next one, so we can make sure that we walk down from the peak. Let’s have a more detailed look on my solution:
 
-1. I created a variable called zeros where I count all the `0` from the array. Moreover, a second variable was created which stores the length of the array. 
-2. Now I use an `for loop` to loop backward over the list starting from the last index and ending on index `0` . I also decrement by 1 each time.
-3. Now I check if my current element plus the variable zeros are smaller than the length of the array. This ensures that we are still in range. If this is the case I shift the element at index `i` to the right by `zeros` positions. This ensures that the `0` is successfully duplicated.
-4. In the next step I check if my current element is `0` and if this is the case I subtract `1` from the `zeros` . 
-5. Last but not least after updating the zeros value I check again the same if condition is my current element plus the variable zeros are smaller than the length of the array. If this is the case I shift the element at index `i` to the right by `zeros` positions. This ensures that the `0` is successfully duplicated.
+1. First we need to check if the length of the array is smaller than 3. If this is the case we can immediately `return False` .
+2. Now we initialize a variable called `i` which we set to 0 and in the next line we create a `while loop` where we first check if our `i` is in the range of the array and that our current element `arr[i]` is smaller than the next item in the array which would be `arr[i+1]` . With this check we make sure that we walk the mountain up. If all the condition are met we add one to our `i` .
+3. Next we need to make sure that our top of the mountain is not the first or last element since then it would not be a valid mountain. We check if our variable `i` is zero or our `i` is the length of the array. Since we had our first while loop we can make sure that we are at the peak which should be somewhere in the middle of the array, so checking if `i` is zero or the length of the array would make sure that we have a valid mountain. If after the first while loop our `i` is `0` or `len(arr) - 1` then we `return False` .
+4. As a next step we make a new while loop which again will run until `i` is in the range of the array and now my current element which is `arr[i]` needs to be greater than the next element which is `arr[i + 1]` with that we make sure that we walk down the mountain. If these conditions are met we add one to our `i` .
+5. Last but not least we return `True` if our `i` is equal to the `len(arr) - 1` else `False`.
 
-Time Complexity: `Big O(n)`, where `n` is the number of elements in the array.
-Space Complexity: `Big O(1)` . I did not use any additional space.
+**Big O**
+
+- Time Complexity: `Big O(n)`, where `n` is the number of elements in the array.
+- Space Complexity: `Big O(1)` . I did not use any additional space.
