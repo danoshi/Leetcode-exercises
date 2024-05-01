@@ -7,6 +7,7 @@ class TestSolution(unittest.TestCase):
         solution = Solution()
 
         self.assertEqual(solution.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2), 5)
+        self.assertEqual(solution.removeElement2([0, 1, 2, 2, 3, 0, 4, 2], 2), 5)
 
     def tearDown(self):
         print("All tests passed successfully!")
