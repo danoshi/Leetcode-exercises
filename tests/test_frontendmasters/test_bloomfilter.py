@@ -1,6 +1,6 @@
 import unittest
 from frontendmasters.Complete_Intro_to_Computer_Science.bloomfilters.bloomfilters import (
-    Solution
+    Solution,
 )
 
 

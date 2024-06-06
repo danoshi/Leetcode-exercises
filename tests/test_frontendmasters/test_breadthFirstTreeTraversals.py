@@ -2,8 +2,9 @@ import unittest
 from collections import deque
 from frontendmasters.Complete_Intro_to_Computer_Science.BreadthFirstTreeTraversals.breadthFirstTreeTraversals import (
     TreeNode,
-    Solution
+    Solution,
 )
+
 
 class TestSolution(unittest.TestCase):
     def setUp(self):
@@ -33,5 +34,6 @@ class TestSolution(unittest.TestCase):
     def tearDown(self):
         print("All tests passed successfully!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

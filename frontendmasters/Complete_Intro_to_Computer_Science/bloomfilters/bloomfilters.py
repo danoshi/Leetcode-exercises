@@ -17,8 +17,10 @@ class Solution:
         self._array[self._h3(string)] = 1
 
     def contains(self, string):
-        return all([
-            self._array[self._h1(string)],
-            self._array[self._h2(string)],
-            self._array[self._h3(string)]
-        ])
+        return all(
+            [
+                self._array[self._h1(string)],
+                self._array[self._h2(string)],
+                self._array[self._h3(string)],
+            ]
+        )

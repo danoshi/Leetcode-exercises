@@ -1,7 +1,7 @@
-import  unittest
+import unittest
 from frontendmasters.Complete_Intro_to_Computer_Science.DepthFirstTreeTraversals.depthFirstTreeTraversals import (
     Solution,
-    TreeNode
+    TreeNode,
 )
 
 
@@ -38,5 +38,6 @@ class TestSolution(unittest.TestCase):
     def tearDown(self):
         print("All tests passed successfully!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

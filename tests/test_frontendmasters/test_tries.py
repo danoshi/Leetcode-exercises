@@ -1,8 +1,9 @@
 import unittest
 from frontendmasters.Complete_Intro_to_Computer_Science.Tries.tries import (
     Node,
-    Solution
+    Solution,
 )
+
 
 class TestSolution(unittest.TestCase):
     def setUp(self):
@@ -23,15 +24,16 @@ class TestSolution(unittest.TestCase):
             "Austin",
             "Indianapolis",
             "Jacksonville",
-            "San Francisco"
+            "San Francisco",
         ]
         trie = self.solution.create_trie(city_names)
         completions = trie.complete("san")
-        expected = ['san antonio', 'san diego', 'san jose']
+        expected = ["san antonio", "san diego", "san jose"]
         self.assertEqual(completions, expected)
 
     def tearDown(self):
         print("All tests passed successfully!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

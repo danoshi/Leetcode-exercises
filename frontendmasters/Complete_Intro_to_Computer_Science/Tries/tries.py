@@ -38,6 +38,7 @@ class Node:
             completions.extend(child._complete(string, "", []))
         return completions
 
+
 class Solution:
     def create_trie(self, words):
         root = Node("")
