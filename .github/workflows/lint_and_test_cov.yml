@@ -1,69 +1,84 @@
-name: Combined Actions
+name: Run Tests and Update Documentation
 
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize # Consider running on updates to PR as well
+  push:
+    branches:
+      - main
+      - master
 
 jobs:
-  lint_and_update_pr:
-    name: Lint and Update PR
+  test-and-update-docs:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out Git repository
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.head_ref }} # Checkout the PR branch
-          token: ${{ secrets.GITHUB_TOKEN }} # Ensure you have push access
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.12"
+          cache: "pip"
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
-          pip install black pytest pytest-cov
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+          pip install pytest-cov
 
-      - name: Auto-format code with black and commit changes
+      - name: Run tests with coverage
         run: |
-          black . || true  # Format code, but don't fail the job if formatting made changes
-          if [ -n "$(git status --porcelain)" ]; then  # Check if there are changes
-            git config user.name 'github-actions[bot]'
-            git config user.email 'github-actions[bot]@users.noreply.github.com'
-            git add .
-            git commit -m "Apply auto-formatting with black"
-            git push
+          python -m pytest --cov=src tests/ -v > test_results.txt
+          python -m pytest --cov=src --cov-report=xml tests/
+
+      - name: Generate coverage badge
+        run: |
+          COVERAGE=$(python -c "import xml.etree.ElementTree as ET; print(ET.parse('coverage.xml').getroot().attrib['line-rate'])")
+          COVERAGE_PCT=$(python -c "print(round(float('${COVERAGE}') * 100, 2))")
+          echo "COVERAGE_PCT=${COVERAGE_PCT}" >> $GITHUB_ENV
+          echo "[![Coverage](https://img.shields.io/badge/Coverage-${COVERAGE_PCT}%25-${COVERAGE_PCT_COLOR})]()" > coverage_badge.txt
+
+          # Determine color based on coverage percentage
+          if (( $(echo "${COVERAGE_PCT} >= 90" | bc -l) )); then
+            echo "COVERAGE_PCT_COLOR=brightgreen" >> $GITHUB_ENV
+          elif (( $(echo "${COVERAGE_PCT} >= 80" | bc -l) )); then
+            echo "COVERAGE_PCT_COLOR=green" >> $GITHUB_ENV
+          elif (( $(echo "${COVERAGE_PCT} >= 70" | bc -l) )); then
+            echo "COVERAGE_PCT_COLOR=yellowgreen" >> $GITHUB_ENV
+          elif (( $(echo "${COVERAGE_PCT} >= 60" | bc -l) )); then
+            echo "COVERAGE_PCT_COLOR=yellow" >> $GITHUB_ENV
           else
-            echo "No changes made by black."
+            echo "COVERAGE_PCT_COLOR=red" >> $GITHUB_ENV
           fi
 
-      - name: Run pytest and generate report
+      - name: Update README.md with test results and coverage
         run: |
-          python -m pytest --cov=frontendmasters --cov=ArrayExercise --cov=MathExercise --cov=Sorting_and_Searching_Exercise --cov=StringExercise --cov-report=term --cov-report=xml > test_data/pytest-coverage.txt
-
-      - name: Pytest coverage comment
-        id: coverageComment
-        uses: MishaKav/pytest-coverage-comment@main
-        with:
-          hide-comment: true
-          pytest-coverage-path: ./test_data/pytest-coverage.txt
-
-      - name: Update Readme with Coverage
-        run: |
-          sed -i '/<!-- Pytest Coverage Comment:Begin -->/,/<!-- Pytest Coverage Comment:End -->/c\<!-- Pytest Coverage Comment:Begin -->\n${{ steps.coverageComment.outputs.coverageHtml }}\n<!-- Pytest Coverage Comment:End -->' ./README.md
-
-          # Check if there are any changes
-          if git diff --quiet README.md; then
-              echo "No changes to README.md. Skipping commit."
+          # Create updated README content
+          if grep -q "## Test Results" README.md; then
+            # If section exists, replace it
+            sed -i '/## Test Results/,/## /c\## Test Results\n\n```\n'"$(cat test_results.txt)"'\n```\n\n'"$(cat coverage_badge.txt)"'\n\n## ' README.md
           else
-              git config --global user.name 'github-actions[bot]'
-              git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-              git add README.md
-
-              # Commit and push only if there were changes
-              git commit -m "Update README with coverage report"
-              git push
+            # If section doesn't exist, append it
+            echo -e "\n## Test Results\n\n\`\`\`\n$(cat test_results.txt)\n\`\`\`\n\n$(cat coverage_badge.txt)\n" >> README.md
           fi
+
+      - name: Update src/index.md with test results and coverage
+        run: |
+          # Create updated index.md content
+          if grep -q "## Test Results" src/index.md; then
+            # If section exists, replace it
+            sed -i '/## Test Results/,/## /c\## Test Results\n\n```\n'"$(cat test_results.txt)"'\n```\n\n'"$(cat coverage_badge.txt)"'\n\n## ' src/index.md
+          else
+            # If section doesn't exist, append it
+            echo -e "\n## Test Results\n\n\`\`\`\n$(cat test_results.txt)\n\`\`\`\n\n$(cat coverage_badge.txt)\n" >> src/index.md
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "github-actions-bot@users.noreply.github.com"
+          git add README.md src/index.md
+          git commit -m "Update test results and coverage [skip ci]" || echo "No changes to commit"
+          git push

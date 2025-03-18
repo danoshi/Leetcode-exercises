@@ -2,6 +2,9 @@
 .vscode
 .zed
 node_modules
+.venv
+.ruff_cache
+.ropeproject
 
 # Compiled source #
 ###################
