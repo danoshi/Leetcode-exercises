@@ -57,25 +57,31 @@ jobs:
 
       - name: Update README.md with test results and coverage
         run: |
-          # Create updated README content
+          # For README.md
           if grep -q "## Test Results" README.md; then
-            # If section exists, replace it
-            sed -i '/## Test Results/,/## /c\## Test Results\n\n```\n'"$(cat test_results.txt)"'\n```\n\n'"$(cat coverage_badge.txt)"'\n\n## ' README.md
-          else
-            # If section doesn't exist, append it
-            echo -e "\n## Test Results\n\n\`\`\`\n$(cat test_results.txt)\n\`\`\`\n\n$(cat coverage_badge.txt)\n" >> README.md
+            # Remove everything from "## Test Results" to the end of the file
+            sed -i '/## Test Results/,$d' README.md
           fi
+
+          # Add the new content
+          echo -e "\n## Test Results\n\n\`\`\`" >> README.md
+          cat test_results.txt >> README.md
+          echo -e "\`\`\`\n" >> README.md
+          cat coverage_badge.txt >> README.md
 
       - name: Update src/index.md with test results and coverage
         run: |
-          # Create updated index.md content
+          # For src/index.md
           if grep -q "## Test Results" src/index.md; then
-            # If section exists, replace it
-            sed -i '/## Test Results/,/## /c\## Test Results\n\n```\n'"$(cat test_results.txt)"'\n```\n\n'"$(cat coverage_badge.txt)"'\n\n## ' src/index.md
-          else
-            # If section doesn't exist, append it
-            echo -e "\n## Test Results\n\n\`\`\`\n$(cat test_results.txt)\n\`\`\`\n\n$(cat coverage_badge.txt)\n" >> src/index.md
+            # Remove everything from "## Test Results" to the end of the file
+            sed -i '/## Test Results/,$d' src/index.md
           fi
+
+          # Add the new content
+          echo -e "\n## Test Results\n\n\`\`\`" >> src/index.md
+          cat test_results.txt >> src/index.md
+          echo -e "\`\`\`\n" >> src/index.md
+          cat coverage_badge.txt >> src/index.md
 
       - name: Commit and push changes
         run: |
