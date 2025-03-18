@@ -1,8 +1,9 @@
 site_name: LeetCode Solutions and Algorithms
 site_description: Comprehensive collection of LeetCode solutions with detailed explanations
-site_author: Your Name
-repo_url: https://github.com/yourusername/your-repo
-repo_name: yourusername/your-repo
+site_author: Danoshi
+repo_url: https://github.com/danoshi/Leetcode-exercises
+site_url: https://danoshi.github.io/Leetcode-exercises/
+repo_name: danoshi/Leetcode-exercises
 
 theme:
   name: material
@@ -139,8 +140,8 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourusername
+      link: https://github.com/danoshi
     - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/in/yourusername
+      link: https://www.linkedin.com/in/daniel-kaminski-/
 
 docs_dir: src
