@@ -19,6 +19,7 @@ Additionally, I've included exercises from various courses focused on learning d
 
 
 
+
 ## Test Results
 
 ```
@@ -156,7 +157,7 @@ src/string_problems/valid_palindrome/solution.py                                
 TOTAL                                                                                   945     64    93%
 
 
-============================== 71 passed in 0.65s ==============================
+============================== 71 passed in 0.71s ==============================
 ```
 
 [![Coverage](https://img.shields.io/badge/Coverage-93.23%25-brightgreen)]()
